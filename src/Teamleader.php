@@ -73,4 +73,17 @@ class Teamleader
 
 		return $this->make_api_call('addContact.php', $fields);
 	}
+
+	public function add_invoice($type, $id, $departement, array $options = array()){
+
+		$fields = array(
+			'contact_or_company' => $type,
+			'contact_or_company_id' => $id,
+			'sys_department_id' => $departement,
+		);
+
+		$fields = array_merge($fields, $options);
+
+		return $this->make_api_call('addInvoice.php', $fields);
+	}
 }
