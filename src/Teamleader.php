@@ -74,6 +74,24 @@ class Teamleader
 		return $this->make_api_call('addContact.php', $fields);
 	}
 
+	public function pdf_credit_note($id){
+		$fields = ['creditnote_id' => $id];
+		return $this->make_api_call('downloadCreditnotePDF.php', $fields);
+	}
+
+	public function pdf_invoice($id){
+		$fields = ['invoice_id' => $id];
+		return $this->make_api_call('downloadInvoicePDF.php', $fields);
+	}
+
+	public function update_invoice_payment_status($id, $status){
+		$fields = array(
+			'status' => $status,
+			'invoice_id' => $id,
+		);
+		return $this->make_api_call('setInvoicePaymentStatus.php', $fields);
+	}
+
 	public function add_invoice($type, $id, $departement, array $options = array()){
 
 		$fields = array(
